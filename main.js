@@ -6002,8 +6002,6 @@ var elm$core$Array$indexedMap = F2(
 			A3(elm$core$Elm$JsArray$foldl, helper, initialBuilder, tree));
 	});
 var elm$html$Html$td = _VirtualDom_node('td');
-var elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var elm$html$Html$Attributes$style = elm$virtual_dom$VirtualDom$style;
 var author$project$Main$generateRowIndexed = F3(
 	function (mobile, row, col) {
 		return elm$core$Array$toList(
@@ -6016,15 +6014,7 @@ var author$project$Main$generateRowIndexed = F3(
 							_List_fromArray(
 								[
 									elm$html$Html$Attributes$class(
-									b ? 'w3-teal' : 'w3-light-grey'),
-									A2(
-									elm$html$Html$Attributes$style,
-									'height',
-									mobile ? '10px' : '20px'),
-									A2(
-									elm$html$Html$Attributes$style,
-									'width',
-									mobile ? '10px' : '20px'),
+									b ? 'w3-teal cells' : 'w3-light-grey cells'),
 									elm$html$Html$Events$onClick(
 									A2(author$project$Main$CellPressed, r, col))
 								]),
@@ -6082,6 +6072,8 @@ var elm$html$Html$Attributes$href = function (url) {
 		_VirtualDom_noJavaScriptUri(url));
 };
 var elm$html$Html$Attributes$rel = _VirtualDom_attribute('rel');
+var elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var elm$html$Html$Attributes$style = elm$virtual_dom$VirtualDom$style;
 var elm$html$Html$Attributes$value = elm$html$Html$Attributes$stringProperty('value');
 var elm$html$Html$Events$alwaysStop = function (x) {
 	return _Utils_Tuple2(x, true);

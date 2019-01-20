@@ -8,6 +8,19 @@
 </head>
 
 <body>
+  <style>
+  .cells {
+	width: 20px;
+	height: 20px;
+  }
+  
+  @media screen and (max-width: 730px) {
+    .cells {
+	  width: 10px;
+	  height: 10px;
+	}
+  }
+  </style>
   <div id="elm"></div>
   <script>
   var app = Elm.Main.init({
