@@ -6155,17 +6155,6 @@ var author$project$Main$view = function (model) {
 							[
 								A2(author$project$Main$styledButton, author$project$Main$Reset, 'Clear'),
 								A2(author$project$Main$styledButton, author$project$Main$Tick, 'Tick'),
-								A2(
-								elm$html$Html$input,
-								_List_fromArray(
-									[
-										elm$html$Html$Attributes$class('w3-input'),
-										A2(elm$html$Html$Attributes$style, 'width', '100px'),
-										A2(elm$html$Html$Attributes$style, 'display', 'inline'),
-										elm$html$Html$Events$onInput(author$project$Main$UpdateTickIntervalText),
-										elm$html$Html$Attributes$value(model.tickIntervalText + ' ms')
-									]),
-								_List_Nil),
 								function () {
 								var _n0 = model.tickInterval;
 								if (_n0.$ === 'Just') {
@@ -6174,7 +6163,19 @@ var author$project$Main$view = function (model) {
 								} else {
 									return A2(author$project$Main$styledButton, author$project$Main$SetInterval, 'Start');
 								}
-							}()
+							}(),
+								A2(
+								elm$html$Html$input,
+								_List_fromArray(
+									[
+										elm$html$Html$Attributes$class('w3-input'),
+										A2(elm$html$Html$Attributes$style, 'width', '100px'),
+										A2(elm$html$Html$Attributes$style, 'display', 'inline'),
+										elm$html$Html$Events$onInput(author$project$Main$UpdateTickIntervalText),
+										elm$html$Html$Attributes$value(model.tickIntervalText)
+									]),
+								_List_Nil),
+								elm$html$Html$text('ms')
 							]))
 					])),
 				A2(
