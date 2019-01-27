@@ -5517,6 +5517,8 @@ var elm$core$String$toFloat = _String_toFloat;
 var author$project$Main$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
+			case 6:
+				return author$project$Main$init(0);
 			case 0:
 				var dt = msg.a;
 				var intObjects = A3(author$project$Main$integrateNTimes, model.M, model.S, model.Q);
@@ -5567,6 +5569,7 @@ var author$project$Main$update = F2(
 					elm$core$Platform$Cmd$none);
 		}
 	});
+var author$project$Main$Reset = {$: 6};
 var author$project$Main$SetValues = {$: 5};
 var author$project$Main$ToggleClear = {$: 1};
 var author$project$Main$UpdateIntegration = function (a) {
@@ -6598,6 +6601,16 @@ var author$project$Main$view = function (model) {
 						_List_fromArray(
 							[
 								elm$html$Html$text('Set steps')
+							])),
+						A2(
+						elm$html$Html$button,
+						_List_fromArray(
+							[
+								elm$html$Html$Events$onClick(author$project$Main$Reset)
+							]),
+						_List_fromArray(
+							[
+								elm$html$Html$text('Reset state')
 							]))
 					])),
 				A3(
