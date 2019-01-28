@@ -784,11 +784,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.ag.O === region.an.O)
+	if (region.ah.P === region.ao.P)
 	{
-		return 'on line ' + region.ag.O;
+		return 'on line ' + region.ah.P;
 	}
-	return 'on lines ' + region.ag.O + ' through ' + region.an.O;
+	return 'on lines ' + region.ah.P + ' through ' + region.ao.P;
 }
 
 
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.a_,
-		impl.bb,
-		impl.a9,
+		impl.a$,
+		impl.bc,
+		impl.ba,
 		function() { return function() {} }
 	);
 });
@@ -2659,9 +2659,9 @@ var _VirtualDom_mapEventTuple = F2(function(func, tuple)
 var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
-		p: func(record.p),
-		ah: record.ah,
-		ae: record.ae
+		s: func(record.s),
+		ai: record.ai,
+		af: record.af
 	}
 });
 
@@ -2929,11 +2929,11 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 		// 3 = Custom
 
 		var value = result.a;
-		var message = !tag ? value : tag < 3 ? value.a : value.p;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.ah;
+		var message = !tag ? value : tag < 3 ? value.a : value.s;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.ai;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.ae) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.af) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -3883,11 +3883,11 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.a_,
-		impl.bb,
-		impl.a9,
+		impl.a$,
+		impl.bc,
+		impl.ba,
 		function(sendToApp, initialModel) {
-			var view = impl.bd;
+			var view = impl.be;
 			/**/
 			var domNode = args['node'];
 			//*/
@@ -3919,12 +3919,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.a_,
-		impl.bb,
-		impl.a9,
+		impl.a$,
+		impl.bc,
+		impl.ba,
 		function(sendToApp, initialModel) {
-			var divertHrefToApp = impl.R && impl.R(sendToApp)
-			var view = impl.bd;
+			var divertHrefToApp = impl.S && impl.S(sendToApp)
+			var view = impl.be;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3932,12 +3932,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.aN);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.aO);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.ba) && (_VirtualDom_doc.title = title = doc.ba);
+				(title !== doc.bb) && (_VirtualDom_doc.title = title = doc.bb);
 			});
 		}
 	);
@@ -3993,12 +3993,12 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.a3;
-	var onUrlRequest = impl.a4;
+	var onUrlChange = impl.a4;
+	var onUrlRequest = impl.a5;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
-		R: function(sendToApp)
+		S: function(sendToApp)
 		{
 			key.a = sendToApp;
 			_Browser_window.addEventListener('popstate', key);
@@ -4014,9 +4014,9 @@ function _Browser_application(impl)
 					var next = elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.aC === next.aC
-							&& curr.ar === next.ar
-							&& curr.az.a === next.az.a
+							&& curr.aD === next.aD
+							&& curr.as === next.as
+							&& curr.aA.a === next.aA.a
 						)
 							? elm$browser$Browser$Internal(next)
 							: elm$browser$Browser$External(href)
@@ -4024,13 +4024,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		a_: function(flags)
+		a$: function(flags)
 		{
-			return A3(impl.a_, flags, _Browser_getUrl(), key);
+			return A3(impl.a$, flags, _Browser_getUrl(), key);
 		},
-		bd: impl.bd,
-		bb: impl.bb,
-		a9: impl.a9
+		be: impl.be,
+		bc: impl.bc,
+		ba: impl.ba
 	});
 }
 
@@ -4096,17 +4096,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { aY: 'hidden', aO: 'visibilitychange' }
+		? { aZ: 'hidden', aP: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { aY: 'mozHidden', aO: 'mozvisibilitychange' }
+		? { aZ: 'mozHidden', aP: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { aY: 'msHidden', aO: 'msvisibilitychange' }
+		? { aZ: 'msHidden', aP: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { aY: 'webkitHidden', aO: 'webkitvisibilitychange' }
-		: { aY: 'hidden', aO: 'visibilitychange' };
+		? { aZ: 'webkitHidden', aP: 'webkitvisibilitychange' }
+		: { aZ: 'hidden', aP: 'visibilitychange' };
 }
 
 
@@ -4187,12 +4187,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		aH: _Browser_getScene(),
-		aK: {
+		aI: _Browser_getScene(),
+		aL: {
 			a: _Browser_window.pageXOffset,
 			b: _Browser_window.pageYOffset,
-			I: _Browser_doc.documentElement.clientWidth,
-			D: _Browser_doc.documentElement.clientHeight
+			J: _Browser_doc.documentElement.clientWidth,
+			E: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4202,8 +4202,8 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		I: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		D: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		J: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		E: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4226,15 +4226,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			aH: {
-				I: node.scrollWidth,
-				D: node.scrollHeight
+			aI: {
+				J: node.scrollWidth,
+				E: node.scrollHeight
 			},
-			aK: {
+			aL: {
 				a: node.scrollLeft,
 				b: node.scrollTop,
-				I: node.clientWidth,
-				D: node.clientHeight
+				J: node.clientWidth,
+				E: node.clientHeight
 			}
 		};
 	});
@@ -4264,18 +4264,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			aH: _Browser_getScene(),
-			aK: {
+			aI: _Browser_getScene(),
+			aL: {
 				a: x,
 				b: y,
-				I: _Browser_doc.documentElement.clientWidth,
-				D: _Browser_doc.documentElement.clientHeight
+				J: _Browser_doc.documentElement.clientWidth,
+				E: _Browser_doc.documentElement.clientHeight
 			},
-			aS: {
+			aT: {
 				a: x + rect.left,
 				b: y + rect.top,
-				I: rect.width,
-				D: rect.height
+				J: rect.width,
+				E: rect.height
 			}
 		};
 	});
@@ -4311,8 +4311,22 @@ function _Browser_load(url)
 	}));
 }
 var author$project$Main$RungeKutta = 1;
+var author$project$Main$Vector = F2(
+	function (x, y) {
+		return {a: x, b: y};
+	});
 var elm$core$Basics$False = 1;
 var elm$core$Basics$True = 0;
+var elm$core$Basics$negate = function (n) {
+	return -n;
+};
+var elm$core$Result$isOk = function (result) {
+	if (!result.$) {
+		return true;
+	} else {
+		return false;
+	}
+};
 var elm$core$Basics$EQ = 1;
 var elm$core$Basics$GT = 2;
 var elm$core$Basics$LT = 0;
@@ -4393,23 +4407,13 @@ var elm$core$Array$foldr = F3(
 var elm$core$Array$toList = function (array) {
 	return A3(elm$core$Array$foldr, elm$core$List$cons, _List_Nil, array);
 };
-var elm$core$Basics$fdiv = _Basics_fdiv;
-var elm$core$Basics$negate = function (n) {
-	return -n;
-};
-var elm$core$Result$isOk = function (result) {
-	if (!result.$) {
-		return true;
-	} else {
-		return false;
-	}
-};
 var elm$core$Array$branchFactor = 32;
 var elm$core$Array$Array_elm_builtin = F4(
 	function (a, b, c, d) {
 		return {$: 0, a: a, b: b, c: c, d: d};
 	});
 var elm$core$Basics$ceiling = _Basics_ceiling;
+var elm$core$Basics$fdiv = _Basics_fdiv;
 var elm$core$Basics$logBase = F2(
 	function (base, number) {
 		return _Basics_log(number) / _Basics_log(base);
@@ -4791,63 +4795,76 @@ var elm$json$Json$Decode$errorToStringHelp = F2(
 	});
 var elm$core$Platform$Cmd$batch = _Platform_batch;
 var elm$core$Platform$Cmd$none = elm$core$Platform$Cmd$batch(_List_Nil);
-var elm$core$String$fromFloat = _String_fromNumber;
 var author$project$Main$init = function (_n0) {
 	return _Utils_Tuple2(
 		{
-			A: false,
-			B: 0.0,
-			ap: true,
-			Y: 1,
-			M: 100,
-			N: '100',
-			Q: _List_fromArray(
+			B: false,
+			C: 0.0,
+			aq: true,
+			Z: 1,
+			N: 500,
+			O: '500',
+			R: _List_fromArray(
 				[
 					{
 					c: {a: 30.0, b: 0.0},
-					v: _List_Nil,
-					k: 100.0,
-					q: 'obj1',
-					h: {a: 0.0, b: 18.0}
+					j: 100.0,
+					p: 'obj1',
+					l: A2(author$project$Main$Vector, 0.0, 0.0),
+					m: A2(author$project$Main$Vector, 0.0, 0.0),
+					k: {a: 0.0, b: 18.0}
 				},
 					{
 					c: {a: 30.7, b: 0.0},
-					v: _List_Nil,
-					k: 1.0,
-					q: 'obj2',
-					h: {a: 0, b: 14.2}
+					j: 1.0,
+					p: 'obj2',
+					l: A2(author$project$Main$Vector, 0.0, 0.0),
+					m: A2(author$project$Main$Vector, 0.0, 0.0),
+					k: {a: 0, b: 14.2}
 				},
 					{
-					c: {a: 0.0, b: 0.0},
-					v: _List_Nil,
-					k: 100000.0,
-					q: 'the sun',
-					h: {a: 0.0, b: 0.0}
+					c: {a: 5.0, b: 0.0},
+					j: 100000.0,
+					p: 'the sun',
+					l: A2(author$project$Main$Vector, 0.0, 0.0),
+					m: A2(author$project$Main$Vector, 0.0, 0.0),
+					k: {a: 0.0, b: 0.0}
 				},
 					{
-					c: {a: 14.0, b: 0.0},
-					v: _List_Nil,
-					k: 25.0,
-					q: 'obj3',
-					h: {a: 0.0, b: 25}
+					c: {a: -7.0, b: 0.0},
+					j: 25.0,
+					p: 'obj3',
+					l: A2(author$project$Main$Vector, 0.0, 0.0),
+					m: A2(author$project$Main$Vector, 0.0, 0.0),
+					k: {a: 10.0, b: -25}
 				},
 					{
 					c: {a: -20.0, b: 0.0},
-					v: _List_Nil,
-					k: 55.0,
-					q: 'obj4',
-					h: {a: 0.0, b: -22}
+					j: 55.0,
+					p: 'obj4',
+					l: A2(author$project$Main$Vector, 0.0, 0.0),
+					m: A2(author$project$Main$Vector, 0.0, 0.0),
+					k: {a: 0.0, b: -22}
 				},
 					{
 					c: {a: -20.5, b: 0.0},
-					v: _List_Nil,
-					k: 2.0,
-					q: 'obj5',
-					h: {a: 0.0, b: -25}
+					j: 2.0,
+					p: 'obj5',
+					l: A2(author$project$Main$Vector, 0.0, 0.0),
+					m: A2(author$project$Main$Vector, 0.0, 0.0),
+					k: {a: 0.0, b: -25.3}
+				},
+					{
+					c: {a: 10, b: 0},
+					j: 20.0,
+					p: 'obj6',
+					l: A2(author$project$Main$Vector, 0, 0),
+					m: A2(author$project$Main$Vector, 0, 0),
+					k: {a: 0.0, b: -45}
 				}
 				]),
-			S: 1 / 10000,
-			T: elm$core$String$fromFloat(1 / 10000)
+			T: 1.0e-5,
+			U: '0.00001'
 		},
 		elm$core$Platform$Cmd$none);
 };
@@ -4859,7 +4876,7 @@ var elm$browser$Browser$AnimationManager$Delta = function (a) {
 };
 var elm$browser$Browser$AnimationManager$State = F3(
 	function (subs, request, oldTime) {
-		return {ac: oldTime, aF: request, aI: subs};
+		return {ad: oldTime, aG: request, aJ: subs};
 	});
 var elm$core$Task$succeed = _Scheduler_succeed;
 var elm$browser$Browser$AnimationManager$init = elm$core$Task$succeed(
@@ -5066,7 +5083,7 @@ var elm$core$String$contains = _String_contains;
 var elm$core$String$toInt = _String_toInt;
 var elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {aq: fragment, ar: host, ax: path, az: port_, aC: protocol, aD: query};
+		return {ar: fragment, as: host, ay: path, aA: port_, aD: protocol, aE: query};
 	});
 var elm$url$Url$chompBeforePath = F5(
 	function (protocol, path, params, frag, str) {
@@ -5177,8 +5194,8 @@ var elm$core$Process$kill = _Scheduler_kill;
 var elm$core$Process$spawn = _Scheduler_spawn;
 var elm$browser$Browser$AnimationManager$onEffects = F3(
 	function (router, subs, _n0) {
-		var request = _n0.aF;
-		var oldTime = _n0.ac;
+		var request = _n0.aG;
+		var oldTime = _n0.ad;
 		var _n1 = _Utils_Tuple2(request, subs);
 		if (_n1.a.$ === 1) {
 			if (!_n1.b.b) {
@@ -5226,8 +5243,8 @@ var elm$time$Time$Posix = elm$core$Basics$identity;
 var elm$time$Time$millisToPosix = elm$core$Basics$identity;
 var elm$browser$Browser$AnimationManager$onSelfMsg = F3(
 	function (router, newTime, _n0) {
-		var subs = _n0.aI;
-		var oldTime = _n0.ac;
+		var subs = _n0.aJ;
+		var oldTime = _n0.ad;
 		var send = function (sub) {
 			if (!sub.$) {
 				var tagger = sub.a;
@@ -5296,13 +5313,26 @@ var elm$browser$Browser$Events$onAnimationFrameDelta = elm$browser$Browser$Anima
 var author$project$Main$subscriptions = function (model) {
 	return elm$browser$Browser$Events$onAnimationFrameDelta(author$project$Main$Frame);
 };
+var author$project$Main$makeAllNextValueCurrentOnes = function (objectList) {
+	if (!objectList.b) {
+		return _List_Nil;
+	} else {
+		var object = objectList.a;
+		var t = objectList.b;
+		return (object.p === 'the sun') ? A2(
+			elm$core$List$cons,
+			object,
+			author$project$Main$makeAllNextValueCurrentOnes(t)) : A2(
+			elm$core$List$cons,
+			_Utils_update(
+				object,
+				{c: object.l, k: object.m}),
+			author$project$Main$makeAllNextValueCurrentOnes(t));
+	}
+};
 var author$project$Main$addVectors = F2(
 	function (vector1, vector2) {
 		return {a: vector1.a + vector2.a, b: vector1.b + vector2.b};
-	});
-var author$project$Main$Vector = F2(
-	function (x, y) {
-		return {a: x, b: y};
 	});
 var author$project$Main$gravityConstant = 0.1;
 var author$project$Main$multiplyVectorByNumber = F2(
@@ -5331,7 +5361,7 @@ var author$project$Main$calculateAcceleration = F2(
 			var r2 = h.c;
 			var r1 = object1.c;
 			var r12 = A2(author$project$Main$vectorDiff, r2, r1);
-			var m = h.k;
+			var m = h.j;
 			var absR12 = author$project$Main$vectorAbs(r12);
 			return A2(
 				author$project$Main$addVectors,
@@ -5344,7 +5374,7 @@ var author$project$Main$calculateAcceleration = F2(
 	});
 var author$project$Main$rungeKuttaIntegrateObj = F3(
 	function (listOfOtherObjects, tObject, dt) {
-		var v0 = tObject.h;
+		var v0 = tObject.k;
 		var t0 = 0;
 		var t1 = t0 + (dt / 2);
 		var t2 = t0 + (dt / 2);
@@ -5356,7 +5386,7 @@ var author$project$Main$rungeKuttaIntegrateObj = F3(
 					author$project$Main$calculateAcceleration,
 					_Utils_update(
 						tObject,
-						{c: r, h: v}),
+						{c: r, k: v}),
 					listOfOtherObjects);
 			});
 		var l1 = A2(
@@ -5443,7 +5473,7 @@ var author$project$Main$rungeKuttaIntegrateObj = F3(
 		var newCoordinates = A2(author$project$Main$addVectors, r0, deltaR);
 		return _Utils_update(
 			tObject,
-			{c: newCoordinates, h: newVelocity});
+			{l: newCoordinates, m: newVelocity});
 	});
 var elm$core$Basics$neq = _Utils_notEqual;
 var elm$core$List$filter = F2(
@@ -5465,26 +5495,20 @@ var author$project$Main$integrateAllObjects = F2(
 			} else {
 				var h = objsLeft.a;
 				var t = objsLeft.b;
-				if (h.q === 'the sun') {
-					return A2(
-						elm$core$List$cons,
-						h,
-						helper(t));
-				} else {
-					var otherObjects = A2(
-						elm$core$List$filter,
-						function (o) {
-							return !_Utils_eq(o, h);
-						},
-						objectList);
-					return A2(
-						elm$core$List$cons,
-						A3(author$project$Main$rungeKuttaIntegrateObj, otherObjects, h, dt),
-						helper(t));
-				}
+				var otherObjects = A2(
+					elm$core$List$filter,
+					function (o) {
+						return !_Utils_eq(o, h);
+					},
+					objectList);
+				return A2(
+					elm$core$List$cons,
+					A3(author$project$Main$rungeKuttaIntegrateObj, otherObjects, h, dt),
+					helper(t));
 			}
 		};
-		return helper(objectList);
+		return author$project$Main$makeAllNextValueCurrentOnes(
+			helper(objectList));
 	});
 var author$project$Main$integrateNTimes = F3(
 	function (times, step, objectList) {
@@ -5521,51 +5545,51 @@ var author$project$Main$update = F2(
 				return author$project$Main$init(0);
 			case 0:
 				var dt = msg.a;
-				var intObjects = A3(author$project$Main$integrateNTimes, model.M, model.S, model.Q);
+				var intObjects = A3(author$project$Main$integrateNTimes, model.N, model.T, model.R);
 				var updatedModel = _Utils_update(
 					model,
-					{B: model.B + 1, Q: intObjects});
+					{C: model.C + 1, R: intObjects});
 				return _Utils_Tuple2(updatedModel, elm$core$Platform$Cmd$none);
 			case 1:
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{A: !model.A}),
+						{B: !model.B}),
 					elm$core$Platform$Cmd$none);
 			case 2:
 				var method = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{Y: method}),
+						{Z: method}),
 					elm$core$Platform$Cmd$none);
 			case 3:
 				var str = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{T: str}),
+						{U: str}),
 					elm$core$Platform$Cmd$none);
 			case 4:
 				var str = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{N: str}),
+						{O: str}),
 					elm$core$Platform$Cmd$none);
 			default:
 				var newStep = A2(
 					elm$core$Maybe$withDefault,
-					model.S,
-					elm$core$String$toFloat(model.T));
+					model.T,
+					elm$core$String$toFloat(model.U));
 				var newIntegration = A2(
 					elm$core$Maybe$withDefault,
-					model.M,
-					elm$core$String$toInt(model.N));
+					model.N,
+					elm$core$String$toInt(model.O));
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{M: newIntegration, S: newStep}),
+						{N: newIntegration, T: newStep}),
 					elm$core$Platform$Cmd$none);
 		}
 	});
@@ -5687,28 +5711,28 @@ var joakin$elm_canvas$Canvas$addSettingsToRenderable = F2(
 						return _Utils_update(
 							r,
 							{
-								t: A2(elm$core$List$cons, cmd, r.t)
+								v: A2(elm$core$List$cons, cmd, r.v)
 							});
 					case 1:
 						var cmds = setting.a;
 						return _Utils_update(
 							r,
 							{
-								t: A3(elm$core$List$foldl, elm$core$List$cons, r.t, cmds)
+								v: A3(elm$core$List$foldl, elm$core$List$cons, r.v, cmds)
 							});
 					case 3:
 						var f = setting.a;
 						return _Utils_update(
 							r,
 							{
-								L: f(r.L)
+								M: f(r.M)
 							});
 					default:
 						var op = setting.a;
 						return _Utils_update(
 							r,
 							{
-								K: A2(joakin$elm_canvas$Canvas$mergeDrawOp, r.K, op)
+								L: A2(joakin$elm_canvas$Canvas$mergeDrawOp, r.L, op)
 							});
 				}
 			});
@@ -5720,9 +5744,9 @@ var joakin$elm_canvas$Canvas$shapes = F2(
 			joakin$elm_canvas$Canvas$addSettingsToRenderable,
 			settings,
 			{
-				t: _List_Nil,
-				K: joakin$elm_canvas$Canvas$NotSpecified,
-				L: joakin$elm_canvas$Canvas$DrawableShapes(ss)
+				v: _List_Nil,
+				L: joakin$elm_canvas$Canvas$NotSpecified,
+				M: joakin$elm_canvas$Canvas$DrawableShapes(ss)
 			});
 	});
 var author$project$Main$clearScreen = A2(
@@ -5768,7 +5792,7 @@ var author$project$Main$drawObjects = function (objectList) {
 				joakin$elm_canvas$Canvas$circle,
 				_Utils_Tuple2(h.c.a * 10, h.c.b * 10),
 				elm$core$Basics$sqrt(
-					elm$core$Basics$sqrt(h.k))),
+					elm$core$Basics$sqrt(h.j))),
 			author$project$Main$drawObjects(t));
 	}
 };
@@ -5905,12 +5929,12 @@ var joakin$elm_canvas$Canvas$transform = function (transforms) {
 						var y = t.b;
 						return A2(joakin$elm_canvas$Canvas$Internal$translate, x, y);
 					default:
-						var m11 = t.a.a$;
-						var m12 = t.a.a0;
-						var m21 = t.a.a1;
-						var m22 = t.a.a2;
-						var dx = t.a.aQ;
-						var dy = t.a.aR;
+						var m11 = t.a.a0;
+						var m12 = t.a.a1;
+						var m21 = t.a.a2;
+						var m22 = t.a.a3;
+						var dx = t.a.aR;
+						var dy = t.a.aS;
 						return A6(joakin$elm_canvas$Canvas$Internal$transform, m11, m12, m21, m22, dx, dy);
 				}
 			},
@@ -5925,11 +5949,11 @@ var author$project$Main$render = function (model) {
 	var size = author$project$Main$width / 3;
 	var x = -(size / 2);
 	var y = -(size / 2);
-	var rotation = elm$core$Basics$degrees(model.B * 3);
+	var rotation = elm$core$Basics$degrees(model.C * 3);
 	var hue = A2(
 		elm$core$Basics$modBy,
 		100,
-		elm$core$Basics$floor(model.B / 4)) / 100;
+		elm$core$Basics$floor(model.C / 4)) / 100;
 	return A2(
 		joakin$elm_canvas$Canvas$shapes,
 		_List_fromArray(
@@ -5937,12 +5961,12 @@ var author$project$Main$render = function (model) {
 				joakin$elm_canvas$Canvas$transform(
 				_List_fromArray(
 					[
-						A2(joakin$elm_canvas$Canvas$translate, author$project$Main$centerX, author$project$Main$centerY + 0)
+						A2(joakin$elm_canvas$Canvas$translate, author$project$Main$centerX - 100, author$project$Main$centerY + 0)
 					])),
 				joakin$elm_canvas$Canvas$fill(
 				A3(avh4$elm_color$Color$hsl, hue, 0.3, 0.7))
 			]),
-		author$project$Main$drawObjects(model.Q));
+		author$project$Main$drawObjects(model.R));
 };
 var elm$html$Html$button = _VirtualDom_node('button');
 var elm$html$Html$div = _VirtualDom_node('div');
@@ -6269,6 +6293,7 @@ var elm$core$Basics$round = _Basics_round;
 var elm$core$String$concat = function (strings) {
 	return A2(elm$core$String$join, '', strings);
 };
+var elm$core$String$fromFloat = _String_fromNumber;
 var avh4$elm_color$Color$toCssString = function (_n0) {
 	var r = _n0.a;
 	var g = _n0.b;
@@ -6397,7 +6422,7 @@ var joakin$elm_canvas$Canvas$renderTextFill = F5(
 	function (txt, x, y, color, cmds) {
 		return A2(
 			elm$core$List$cons,
-			A4(joakin$elm_canvas$Canvas$Internal$fillText, txt.Z, x, y, txt.P),
+			A4(joakin$elm_canvas$Canvas$Internal$fillText, txt._, x, y, txt.Q),
 			A2(
 				elm$core$List$cons,
 				joakin$elm_canvas$Canvas$Internal$fillStyle(color),
@@ -6433,7 +6458,7 @@ var joakin$elm_canvas$Canvas$renderTextStroke = F5(
 	function (txt, x, y, color, cmds) {
 		return A2(
 			elm$core$List$cons,
-			A4(joakin$elm_canvas$Canvas$Internal$strokeText, txt.Z, x, y, txt.P),
+			A4(joakin$elm_canvas$Canvas$Internal$strokeText, txt._, x, y, txt.Q),
 			A2(
 				elm$core$List$cons,
 				joakin$elm_canvas$Canvas$Internal$strokeStyle(color),
@@ -6441,7 +6466,7 @@ var joakin$elm_canvas$Canvas$renderTextStroke = F5(
 	});
 var joakin$elm_canvas$Canvas$renderTextDrawOp = F3(
 	function (drawOp, txt, cmds) {
-		var _n0 = txt.ad;
+		var _n0 = txt.ae;
 		var x = _n0.a;
 		var y = _n0.b;
 		switch (drawOp.$) {
@@ -6492,9 +6517,9 @@ var joakin$elm_canvas$Canvas$Internal$save = A2(joakin$elm_canvas$Canvas$Interna
 var joakin$elm_canvas$Canvas$renderOne = F2(
 	function (_n0, cmds) {
 		var data = _n0;
-		var commands = data.t;
-		var drawable = data.L;
-		var drawOp = data.K;
+		var commands = data.v;
+		var drawable = data.M;
+		var drawOp = data.L;
 		return A2(
 			elm$core$List$cons,
 			joakin$elm_canvas$Canvas$Internal$restore,
@@ -6570,17 +6595,17 @@ var author$project$Main$view = function (model) {
 						_List_fromArray(
 							[
 								elm$html$Html$text(
-								model.A ? 'Leave traces' : 'Refresh screen')
+								model.B ? 'Leave traces' : 'Refresh screen')
 							])),
 						elm$html$Html$text(
-						'Current integration method: ' + author$project$Main$integrationMethodToString(model.Y)),
+						'Current integration method: ' + author$project$Main$integrationMethodToString(model.Z)),
 						elm$html$Html$text('Integration step:'),
 						A2(
 						elm$html$Html$input,
 						_List_fromArray(
 							[
 								elm$html$Html$Events$onInput(author$project$Main$UpdateStep),
-								elm$html$Html$Attributes$value(model.T)
+								elm$html$Html$Attributes$value(model.U)
 							]),
 						_List_Nil),
 						elm$html$Html$text('Integrations per frame:'),
@@ -6589,7 +6614,7 @@ var author$project$Main$view = function (model) {
 						_List_fromArray(
 							[
 								elm$html$Html$Events$onInput(author$project$Main$UpdateIntegration),
-								elm$html$Html$Attributes$value(model.N)
+								elm$html$Html$Attributes$value(model.O)
 							]),
 						_List_Nil),
 						A2(
@@ -6620,7 +6645,7 @@ var author$project$Main$view = function (model) {
 					[
 						A2(elm$html$Html$Attributes$style, 'border', '10px solid rgba(0,0,0,0.1)')
 					]),
-				model.A ? _List_fromArray(
+				model.B ? _List_fromArray(
 					[
 						author$project$Main$clearScreen,
 						author$project$Main$render(model)
@@ -6632,6 +6657,6 @@ var author$project$Main$view = function (model) {
 };
 var elm$browser$Browser$element = _Browser_element;
 var author$project$Main$main = elm$browser$Browser$element(
-	{a_: author$project$Main$init, a9: author$project$Main$subscriptions, bb: author$project$Main$update, bd: author$project$Main$view});
+	{a$: author$project$Main$init, ba: author$project$Main$subscriptions, bc: author$project$Main$update, be: author$project$Main$view});
 _Platform_export({'Main':{'init':author$project$Main$main(
 	elm$json$Json$Decode$succeed(0))(0)}});}(this));
