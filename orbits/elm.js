@@ -2659,7 +2659,7 @@ var _VirtualDom_mapEventTuple = F2(function(func, tuple)
 var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
-		s: func(record.s),
+		r: func(record.r),
 		ai: record.ai,
 		af: record.af
 	}
@@ -2929,7 +2929,7 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 		// 3 = Custom
 
 		var value = result.a;
-		var message = !tag ? value : tag < 3 ? value.a : value.s;
+		var message = !tag ? value : tag < 3 ? value.a : value.r;
 		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.ai;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
@@ -4809,7 +4809,7 @@ var author$project$Main$init = function (_n0) {
 					{
 					c: {a: 30.0, b: 0.0},
 					j: 100.0,
-					p: 'obj1',
+					s: 'obj1',
 					l: A2(author$project$Main$Vector, 0.0, 0.0),
 					m: A2(author$project$Main$Vector, 0.0, 0.0),
 					k: {a: 0.0, b: 18.0}
@@ -4817,15 +4817,15 @@ var author$project$Main$init = function (_n0) {
 					{
 					c: {a: 30.7, b: 0.0},
 					j: 1.0,
-					p: 'obj2',
+					s: 'obj2',
 					l: A2(author$project$Main$Vector, 0.0, 0.0),
 					m: A2(author$project$Main$Vector, 0.0, 0.0),
 					k: {a: 0, b: 14.2}
 				},
 					{
-					c: {a: 5.0, b: 0.0},
+					c: {a: 0.0, b: 0.0},
 					j: 100000.0,
-					p: 'the sun',
+					s: 'the sun',
 					l: A2(author$project$Main$Vector, 0.0, 0.0),
 					m: A2(author$project$Main$Vector, 0.0, 0.0),
 					k: {a: 0.0, b: 0.0}
@@ -4833,15 +4833,15 @@ var author$project$Main$init = function (_n0) {
 					{
 					c: {a: -7.0, b: 0.0},
 					j: 25.0,
-					p: 'obj3',
+					s: 'obj3',
 					l: A2(author$project$Main$Vector, 0.0, 0.0),
 					m: A2(author$project$Main$Vector, 0.0, 0.0),
-					k: {a: 10.0, b: -25}
+					k: {a: 10.0, b: -35}
 				},
 					{
 					c: {a: -20.0, b: 0.0},
 					j: 55.0,
-					p: 'obj4',
+					s: 'obj4',
 					l: A2(author$project$Main$Vector, 0.0, 0.0),
 					m: A2(author$project$Main$Vector, 0.0, 0.0),
 					k: {a: 0.0, b: -22}
@@ -4849,7 +4849,7 @@ var author$project$Main$init = function (_n0) {
 					{
 					c: {a: -20.5, b: 0.0},
 					j: 2.0,
-					p: 'obj5',
+					s: 'obj5',
 					l: A2(author$project$Main$Vector, 0.0, 0.0),
 					m: A2(author$project$Main$Vector, 0.0, 0.0),
 					k: {a: 0.0, b: -25.3}
@@ -4857,10 +4857,10 @@ var author$project$Main$init = function (_n0) {
 					{
 					c: {a: 10, b: 0},
 					j: 20.0,
-					p: 'obj6',
+					s: 'obj6',
 					l: A2(author$project$Main$Vector, 0, 0),
 					m: A2(author$project$Main$Vector, 0, 0),
-					k: {a: 0.0, b: -45}
+					k: {a: 0.0, b: -35}
 				}
 				]),
 			T: 1.0e-5,
@@ -5319,10 +5319,7 @@ var author$project$Main$makeAllNextValueCurrentOnes = function (objectList) {
 	} else {
 		var object = objectList.a;
 		var t = objectList.b;
-		return (object.p === 'the sun') ? A2(
-			elm$core$List$cons,
-			object,
-			author$project$Main$makeAllNextValueCurrentOnes(t)) : A2(
+		return A2(
 			elm$core$List$cons,
 			_Utils_update(
 				object,
@@ -5961,7 +5958,7 @@ var author$project$Main$render = function (model) {
 				joakin$elm_canvas$Canvas$transform(
 				_List_fromArray(
 					[
-						A2(joakin$elm_canvas$Canvas$translate, author$project$Main$centerX - 100, author$project$Main$centerY + 0)
+						A2(joakin$elm_canvas$Canvas$translate, author$project$Main$centerX - 0, author$project$Main$centerY + 0)
 					])),
 				joakin$elm_canvas$Canvas$fill(
 				A3(avh4$elm_color$Color$hsl, hue, 0.3, 0.7))
